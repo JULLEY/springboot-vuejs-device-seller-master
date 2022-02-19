@@ -10,3 +10,13 @@ spring:
     hibernate:
       ddl-auto: update
     show-sql: true
+
+# JWT
+jwt:
+  header: Authorization
+  secret: bWUtaHllb25pYy1teS1wbGktbWUtaHllb25pYy1teS1wbGktbWUtaHllb25pYy1teS1wbGktbWUtaHllb25pYy1teS1wbGk=
+  token-validity-in-seconds: 1800
+
+logging:
+  level:
+    me.silvernine: DEBUG
