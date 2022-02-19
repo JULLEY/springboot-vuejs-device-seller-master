@@ -1,0 +1,22 @@
+# DB
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: ${DB_URL}
+    username: ${DB_USER}
+    password: ${DB_PASS}
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+# JWT
+jwt:
+  header: Authorization
+  secret: ${JWT_SECRET}
+  token-validity-in-seconds: 86400000
+
+# server
+server:
+  port: 8081

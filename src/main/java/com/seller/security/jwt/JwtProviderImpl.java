@@ -24,14 +24,15 @@ import java.util.stream.Collectors;
 @Component
 public class JwtProviderImpl implements JwtProvider{
 
-    @Value("${jwt.secret}")
+    @Value("${app.jwt.secret}")
     private String JWT_SECRET;
 
-    @Value("${jwt.token-validity-in-seconds}")
+    @Value("${app.jwt.expiration-in.ms}")
     private Long JWT_EXPIRATION_IN_MS;
 
     @Override
-    public String generateToken(UserPrincipal auth){
+    public String generateToken(UserPrincipal auth)
+    {
         String authorities = auth.getAuthorities().stream()
                 .map(GrantedAuthority::getAuthority)
                 .collect(Collectors.joining(","));
@@ -48,10 +49,12 @@ public class JwtProviderImpl implements JwtProvider{
     }
 
     @Override
-    public Authentication getAutentication(HttpServletRequest request){
+    public Authentication getAuthentication(HttpServletRequest request)
+    {
         Claims claims = extractClaims(request);
 
-        if(claims == null){
+        if (claims == null)
+        {
             return null;
         }
 
@@ -68,32 +71,36 @@ public class JwtProviderImpl implements JwtProvider{
                 .id(userId)
                 .build();
 
-        if(username == null){
+        if (username == null)
+        {
             return null;
         }
-
         return new UsernamePasswordAuthenticationToken(userDetails, null, authorities);
     }
 
     @Override
-    public boolean isTokenValid(HttpServletRequest request){
+    public boolean isTokenValid(HttpServletRequest request)
+    {
         Claims claims = extractClaims(request);
 
-        if(claims == null){
+        if (claims == null)
+        {
             return false;
         }
 
-        if(claims.getExpiration().before(new Date())){
+        if (claims.getExpiration().before(new Date()))
+        {
             return false;
         }
-
         return true;
     }
 
-    public Claims extractClaims(HttpServletRequest request){
+    private Claims extractClaims(HttpServletRequest request)
+    {
         String token = SecurityUtils.extractAuthTokenFromRequest(request);
 
-        if(token == null){
+        if (token == null)
+        {
             return null;
         }
 
