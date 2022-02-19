@@ -4,6 +4,7 @@ import lombok.Data;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.Set;
 
 @Data
 @Entity
@@ -29,4 +30,10 @@ public class Device {
     @Enumerated(EnumType.STRING)
     @Column(name = "device_type", nullable = false)
     private DeviceType deviceType;
+
+    @Column(name = "device_id", nullable = false, length = 1000)
+    private String deviceId;
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "device")
+    private Set<Purchase> purchaseList;
 }
