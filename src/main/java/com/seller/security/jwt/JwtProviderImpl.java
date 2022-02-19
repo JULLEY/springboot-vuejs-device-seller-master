@@ -30,6 +30,7 @@ public class JwtProviderImpl implements JwtProvider{
     @Value("${jwt.token-validity-in-seconds}")
     private Long JWT_EXPIRATION_IN_MS;
 
+    @Override
     public String generateToken(UserPrincipal auth){
         String authorities = auth.getAuthorities().stream()
                 .map(GrantedAuthority::getAuthority)

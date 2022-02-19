@@ -9,11 +9,12 @@ import org.springframework.data.repository.query.Param;
 
 import java.util.Optional;
 
-public interface UserRepository extends JpaRepository<User, Long> {
-    Optional<User> findByUserName(String username);
+public interface UserRepository extends JpaRepository<User, Long>
+{
+    //findBy + fieldName
+    Optional<User> findByUsername(String username);
 
     @Modifying
     @Query("update User set role = :role where username = :username")
     void updateUserRole(@Param("username") String username, @Param("role") Role role);
-
 }
