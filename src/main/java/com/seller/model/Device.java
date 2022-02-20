@@ -31,6 +31,6 @@ public class Device {
     @Column(name = "device_type", nullable = false)
     private DeviceType deviceType;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "device")
-    private Set<Purchase> purchaseList;
+//    @OneToMany(fetch = FetchType.LAZY, mappedBy = "device")
+//    private Set<Purchase> purchaseList;
 }
