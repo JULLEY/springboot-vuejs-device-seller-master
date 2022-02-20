@@ -29,8 +29,8 @@ public class Purchase {
     @Column(name = "price", nullable = false)
     private Double price;
 
-    @Column(name = "colour", nullable = false)
-    private String colour;
+    @Column(name = "color", nullable = false)
+    private String color;
 
     @Column(name = "purchase_time", nullable = false)
     private LocalDateTime purchaseTime;
