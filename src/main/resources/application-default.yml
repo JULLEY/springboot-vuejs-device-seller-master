@@ -14,5 +14,5 @@ spring:
 # JWT
 jwt:
   header: Authorization
-  secret: bWUtaHllb25pYy1teS1wbGktbWUtaHllb25pYy1teS1wbGktbWUtaHllb25pYy1teS1wbGktbWUtaHllb25pYy1teS1wbGk=
+  secret:
   token-validity-in-seconds: 86400000
